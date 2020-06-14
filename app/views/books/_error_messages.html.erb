@@ -1,5 +1,8 @@
-<ul>
-  <% resource.errors.full_messages.each do |message| %>
-    <li style="color: red;"><%= message %></li>
-  <% end %>
-</ul>
+<div id="error_explanation">
+  <h2><%= resource.errors.size %> <%= resource.errors.size > 1 ? 'errors' : 'error' %> prohibited this book from being saved:</h2>
+  <ul>
+    <% resource.errors.full_messages.each do |message| %>
+      <li style="color: red;"><%= message %></li>
+    <% end %>
+  </ul>
+</div>

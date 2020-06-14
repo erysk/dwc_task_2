@@ -18,11 +18,7 @@
 <h2>New book</h2>
 
 <% if @book.errors.present? %>
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li style="color: red;"><%= message %></li>
-    <% end %>
-  </ul>
+  <%= render 'error_messages', resource: @book %>
 <% end %>
 
 <%= form_with model: @book, local: true do |f| %>
