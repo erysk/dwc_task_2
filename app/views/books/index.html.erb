@@ -1,0 +1,40 @@
+<h1>Books#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @books %>
+  </tbody>
+</table>
+
+<h2>New book</h2>
+
+<% if @book.errors.present? %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li style="color: red;"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @book, local: true do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
