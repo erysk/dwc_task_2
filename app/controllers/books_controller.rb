@@ -1,4 +1,8 @@
 class BooksController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
+    render 'public/404'
+  end
+
   def index
     @books = Book.order(:id)
     @book = Book.new
@@ -14,6 +18,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
   end
 
   def edit
